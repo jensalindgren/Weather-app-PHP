@@ -44,11 +44,11 @@ for ($i = 1; $i < $daysToShow; $i++) {
 
     // Display forecast information for each day in Bootstrap grid columns
     echo "<div class='col-3 weather-box text-center'>";
+    echo "<div class='weather-details'>";
     echo "<p>{$date}</p>";
     echo "<img src='{$imageUrl}' alt='Weather Icon'>";
     echo "<p>Temperature: {$temperature}°C</p>";
     echo "<p>Description: {$description}</p>";
-    echo "<div class='weather-details'>";
     echo "<div class='humidity'><span>Humidity: {$humidity}%</span></div>";
     echo "<div class='wind'><span>Wind Speed: {$windSpeed} m/s</span></div>";
     echo "</div>";

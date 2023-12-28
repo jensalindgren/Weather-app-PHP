@@ -32,6 +32,11 @@ body {
     margin-bottom: 10px;
 }
 
+.weather-box h2 {
+    font-size: 18px;
+    margin-top: 5px;
+}
+
 .input-group-prepend {
     display: flex;
     align-items: center;
@@ -88,19 +93,43 @@ body {
     margin-top: 12px;
 }
 
-.weather-box h2 {
-    font-size: 18px;
-    margin-top: 5px;
+.weather-details {
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+
+.wind {
+    margin-top: 10px;
 }
 
 /* Responsive adjustments */
+@media screen and (max-width: 1200px) {
+    body {
+        font-size: 80%;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    body {
+        font-size: 70%;
+        margin: 5px;
+    }
+}
+
 @media screen and (max-width: 768px) {
     body {
-        font-size: 60%;
+        font-size: 55%;
+        align-items: center;
+        justify-content: center;
     }
 
     .header h1 {
         font-size: 24px;
+    }
+
+    .header h5 {
+        font-size: 14px;
     }
 
     .form-control {
@@ -108,34 +137,19 @@ body {
     }
 
     .input-group button {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .not-found p {
-        font-size: 10px;
-    }
-
-    .weather-box h3,
-    .weather-box h4 {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .weather-box h2 {
-        font-size: 18px;
-        margin-top: 5px;
+        font-size: 16px;
     }
 
-    .forecast-item {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        margin: 10px;
+    .wind {
+        margin-top: 10px;
     }
-
-    .description-forecast {
-        font-size: 14px;
-        margin-top: 5px;
-    }
+    /* Additional adjustments for smaller screens */
 }
