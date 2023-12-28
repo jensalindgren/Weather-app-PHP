@@ -7,36 +7,49 @@ $city = $_GET['city'];
 $apiKey = 'd8d5d9e6b1ffc2fcbf1c3ab0bec153e6';
 
 $weatherAPI = "https://api.openweathermap.org/data/2.5/weather?q={$city}&units=metric&appid={$apiKey}";
-$forecastAPI = "https://api.openweathermap.org/data/2.5/forecast?q={$city}&units=metric&appid={$apiKey}";
 
-// Fetch weather data
 $weatherData = file_get_contents($weatherAPI);
-$weatherInfo = json_decode($weatherData, true);
+$decodedWeatherData = json_decode($weatherData, true);
 
-// Fetch forecast data
-$forecastData = file_get_contents($forecastAPI);
-$forecastInfo = json_decode($forecastData, true);
+if ($decodedWeatherData && $decodedWeatherData['cod'] !== '404') {
+    $weatherImage = ''; // Set weather image URL based on weather condition
 
-if ($weatherInfo && $forecastInfo) {
-    echo "<div class='col-12 text-center'>";
-    echo "<h1>{$weatherInfo['name']}</h1>";
-    echo "<img src='http://openweathermap.org/img/w/{$weatherInfo['weather'][0]['icon']}.png' alt='Weather Icon'>";
-    echo "<p>{$weatherInfo['main']['temp']}°C</p>";
-    echo "<p>{$weatherInfo['weather'][0]['description']}</p>";
-    echo "</div>";
-
-    // Display forecast data
-    for ($i = 0; $i < 4; $i++) {
-        $day = date('l', $forecastInfo['list'][$i]['dt']);
-        $temp = $forecastInfo['list'][$i]['main']['temp'];
-        $description = $forecastInfo['list'][$i]['weather'][0]['description'];
-
-        echo "<div class='col-3 text-center'>";
-        echo "<h4>{$day}</h4>";
-        echo "<p>{$temp}°C</p>";
-        echo "<p>{$description}</p>";
-        echo "</div>";
+    switch ($decodedWeatherData['weather'][0]['main']) {
+        case 'Clouds':
+            $weatherImage = 'assets/images/cloud.png';
+            break;
+        case 'Clear':
+            $weatherImage = 'assets/images/clear.png';
+            break;
+        case 'Rain':
+            $weatherImage = 'assets/images/rain.png';
+            break;
+        case 'Snow':
+            $weatherImage = 'assets/images/snow.png';
+            break;
+        case 'Mist':
+            $weatherImage = 'assets/images/mist.png';
+            break;
+        default:
+            $weatherImage = ''; // Default image URL
     }
+
+    $temperature = $decodedWeatherData['main']['temp'];
+    $description = $decodedWeatherData['weather'][0]['description'];
+    $humidity = $decodedWeatherData['main']['humidity'];
+    $windSpeed = $decodedWeatherData['wind']['speed'];
+
+    // Display weather information using HTML structure
+    echo "<div class='row weather-box mt-3'>";
+    echo "<div class='col-12 text-center'>";
+    echo "<img src='{$weatherImage}' alt='Weather Icon'>";
+    echo "<p>{$temperature}°C</p>";
+    echo "<p>{$description}</p>";
+    echo "<p>Humidity: {$humidity}%</p>";
+    echo "<p>Wind Speed: {$windSpeed} m/s</p>";
+    // Add more weather information as needed
+    echo "</div>";
+    echo "</div>";
 } else {
     echo "Weather information not available";
 }
