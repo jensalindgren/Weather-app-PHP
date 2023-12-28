@@ -13,10 +13,10 @@ $decodedForecastData = json_decode($forecastData, true);
 
 if ($decodedForecastData && $decodedForecastData['cod'] === '200') {
     echo "<div class='row forecast-container mt-5'>";
-    $daysToShow = 5; // Number of days to display
+    $daysToShow = 4; // Number of days to display
 
-    // Iterate through forecast data and display forecast for each day
-    for ($i = 1; $i < $daysToShow; $i++) {
+    // Start the loop from the current day's forecast
+    for ($i = 0; $i < $daysToShow; $i++) {
         $forecastItem = $decodedForecastData['list'][$i * 8]; // Data for each day (adjust index if needed)
 
         // Extract necessary information
@@ -24,10 +24,15 @@ if ($decodedForecastData && $decodedForecastData['cod'] === '200') {
         $date = date('l', $timestamp);
         $temperature = $forecastItem['main']['temp'];
         $description = $forecastItem['weather'][0]['description'];
+        $weatherCode = $forecastItem['weather'][0]['icon']; // Weather code for image URL
+
+        // Convert weather code to image URL
+        $imageUrl = "https://openweathermap.org/img/w/{$weatherCode}.png";
 
         // Display forecast information for each day in Bootstrap grid columns
         echo "<div class='col-3 text-center'>";
         echo "<h4>{$date}</h4>";
+        echo "<img src='{$imageUrl}' alt='Weather Icon'>";
         echo "<p>Temperature: {$temperature}°C</p>";
         echo "<p>Description: {$description}</p>";
         echo "</div>";

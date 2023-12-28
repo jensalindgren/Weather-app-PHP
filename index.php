@@ -58,24 +58,6 @@
                 echo "<p>Wind Speed: {$windSpeed} m/s</p>";
                 echo "</div>";
                 echo "</div>";
-
-                // Display the forecast container if forecast data is available
-                if ($decodedForecastData && $decodedForecastData !== 'Forecast information not available') {
-                    echo "<div class='row forecast-container mt-5'>";
-                    echo "<div class='col-12'>";
-                    echo "<h2 class='text-center'>Forecast</h2>";
-                    echo "<div class='forecast'>";
-                    foreach ($decodedForecastData as $dayForecast) {
-                        echo "<div class='forecast-item'>";
-                        echo "<div class='day'>" . $dayForecast['dayOfWeek'] . "</div>";
-                        echo "<div class='temperature'>" . $dayForecast['temperature'] . "°C</div>";
-                        echo "<div class='description'>" . $dayForecast['description'] . "</div>";
-                        echo "</div>";
-                    }
-                    echo "</div>";
-                    echo "</div>";
-                    echo "</div>";
-                }
             }
         }
         ?>
