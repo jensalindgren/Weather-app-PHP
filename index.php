@@ -50,10 +50,8 @@
             if ($decodedWeatherData && $decodedWeatherData['cod'] !== '404') {
                 include 'forecast.php'; // Include PHP logic to fetch forecast data
 
-                // Display the weather box
                 echo "<div class='row weather-box mt-3'>";
                 echo "<div class='col-12 text-center'>";
-                echo "<img src='{$weatherImage}' alt='Weather Icon'>";
                 echo "<p>{$temperature}°C</p>";
                 echo "<p>{$description}</p>";
                 echo "<p>Humidity: {$humidity}%</p>";
@@ -70,7 +68,6 @@
                     foreach ($decodedForecastData as $dayForecast) {
                         echo "<div class='forecast-item'>";
                         echo "<div class='day'>" . $dayForecast['dayOfWeek'] . "</div>";
-                        echo "<img src='" . $dayForecast['weatherImage'] . "' alt='Weather Icon' class='forecast-image'>";
                         echo "<div class='temperature'>" . $dayForecast['temperature'] . "°C</div>";
                         echo "<div class='description'>" . $dayForecast['description'] . "</div>";
                         echo "</div>";
