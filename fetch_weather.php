@@ -16,15 +16,21 @@ if ($decodedWeatherData && $decodedWeatherData['cod'] !== '404') {
     $description = $decodedWeatherData['weather'][0]['description'];
     $humidity = $decodedWeatherData['main']['humidity'];
     $windSpeed = $decodedWeatherData['wind']['speed'];
+    $weatherCode = $decodedWeatherData['weather'][0]['icon']; // Weather code for image URL
+
+    // Construct the image URL for the weather icon
+    $imageUrl = "https://openweathermap.org/img/w/{$weatherCode}.png";
 
     // Display weather information using HTML structure
-    echo "<div class='row weather-box mt-3'>";
+    echo "<div class='row weather-box mt-7'>";
     echo "<div class='col-12 text-center'>";
-    echo "<p>{$temperature}°C</p>";
+    echo "<h2>Current Weather</h2>";
+    echo "<h3>{$city}</h3>";
+    echo "<h4>{$temperature}°C</h4>";
+    echo "<img src='{$imageUrl}' alt='Weather Icon'>";
     echo "<p>{$description}</p>";
     echo "<p>Humidity: {$humidity}%</p>";
     echo "<p>Wind Speed: {$windSpeed} m/s</p>";
-    // Add more weather information as needed
     echo "</div>";
     echo "</div>";
 } else {

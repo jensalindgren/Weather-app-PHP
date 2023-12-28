@@ -49,15 +49,6 @@
             include 'fetch_weather.php'; // Include PHP logic to fetch weather data
             if ($decodedWeatherData && $decodedWeatherData['cod'] !== '404') {
                 include 'forecast.php'; // Include PHP logic to fetch forecast data
-
-                echo "<div class='row weather-box mt-3'>";
-                echo "<div class='col-12 text-center'>";
-                echo "<p>{$temperature}°C</p>";
-                echo "<p>{$description}</p>";
-                echo "<p>Humidity: {$humidity}%</p>";
-                echo "<p>Wind Speed: {$windSpeed} m/s</p>";
-                echo "</div>";
-                echo "</div>";
             }
         }
         ?>
