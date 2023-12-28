@@ -88,47 +88,54 @@ body {
     margin-top: 12px;
 }
 
+.weather-box h2 {
+    font-size: 18px;
+    margin-top: 5px;
+}
+
 /* Responsive adjustments */
 @media screen and (max-width: 768px) {
     body {
-        font-size: 10px; /* Adjust body font size for smaller screens */
+        font-size: 60%;
     }
 
     .header h1 {
-        font-size: 24px; /* Adjust header font size for smaller screens */
+        font-size: 24px;
     }
 
     .form-control {
-        font-size: 14px; /* Adjust form control font size for smaller screens */
+        font-size: 14px;
     }
 
     .input-group button {
-        font-size: 18px; /* Adjust button font size for smaller screens */
+        font-size: 18px;
     }
 
     .not-found p {
-        font-size: 10px; /* Adjust paragraph font size for smaller screens */
+        font-size: 10px;
     }
 
-    /* Additional adjustments for date and temperature */
     .weather-box h3,
     .weather-box h4 {
-    font-size: 18px; /* Adjust date and temperature font size for smaller screens */
+        font-size: 18px;
     }
 
     .weather-box h2 {
-        font-size: 18;
+        font-size: 18px;
         margin-top: 5px;
     }
-    
-    .forecast-item .temperature-forecast {
-        font-size: 10px; /* Adjust temperature font size for smaller screens */
+
+    .forecast-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: 10px;
     }
 
-    /* Adjust forecast item icon size for smaller screens */
-    .forecast-item img {
-        width: 50px;
-        max-width: 50px;
+    .description-forecast {
+        font-size: 14px;
+        margin-top: 5px;
     }
-
 }

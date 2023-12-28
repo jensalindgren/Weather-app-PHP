@@ -43,13 +43,15 @@ for ($i = 1; $i < $daysToShow; $i++) {
     $imageUrl = "https://openweathermap.org/img/w/{$weatherCode}.png";
 
     // Display forecast information for each day in Bootstrap grid columns
-    echo "<div class='col-3 text-center'>";
+    echo "<div class='col-3 weather-box text-center'>";
     echo "<p>{$date}</p>";
     echo "<img src='{$imageUrl}' alt='Weather Icon'>";
-    echo "<p>{$temperature}°C</p>";
-    echo "<p>{$description}</p>";
-    echo "<p>Humidity: {$humidity}%</p>";
-    echo "<p>Wind Speed: {$windSpeed} m/s</p>";
+    echo "<p>Temperature: {$temperature}°C</p>";
+    echo "<p>Description: {$description}</p>";
+    echo "<div class='weather-details'>";
+    echo "<div class='humidity'><span>Humidity: {$humidity}%</span></div>";
+    echo "<div class='wind'><span>Wind Speed: {$windSpeed} m/s</span></div>";
+    echo "</div>";
     echo "</div>";
 }
 echo "</div>"; // Close forecast container
